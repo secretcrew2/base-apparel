@@ -1,32 +1,41 @@
-const email = document.getElementById('email').value;
-const warning = document.getElementsByClassName('warning');
-const formInput = document.getElementById('email');
 
-document.querySelector('form').addEventListener('submit', function(event) {
-    event.preventDefault(); // prevent the default form submission behavior
-    // your code to handle the form data goes here
-  });
-document.querySelector('form').addEventListener('keypress', function(event){
-    warning[0].style.display = 'none';
-    warning[1].style.display = 'none';
-    formInput.style.borderBlockColor = 'pink'
+const showWarningText = document.getElementsByClassName('warning');
+
+const warning = document.getElementsByClassName('warning-text')[0];
+const warningText = warning.children[0];
+
+const form = document.querySelector('form');
+form.addEventListener('submit', function(event){
+    event.preventDefault();
 })
-function someFunction(){
-    const email = document.getElementById('email').value;
-    const warning = document.getElementsByClassName('warning');
-    const formInput = document.getElementById('email');
-     if(email.length > 0){
-        if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)){
-            alert('success')
-        } else {
-            warning[0].style.display = 'block'
-            warning[1].style.display = 'block'
-            warning[1].innerHTML = 'Please provide a valid email';
-            formInput.style.borderBlockColor = 'red'
-        }
-     } else {   
-         warning[0].style.display = 'block';
-         warning[1].style.display = 'block';
-         formInput.style.borderBlockColor = 'red'
-     }
+
+form.addEventListener('keypress', function(event){
+    hideWarnings();
+})
+function emailValidation(){
+    const emailInput = document.getElementById('email').value;
+    if(emailInput.length === 0){
+        showWarning('Please provide an Email');
+        console.log(emailInput.length);
+    } else if(!(isValidEmail(emailInput))){
+        showWarning('Please enter a valid email');
+    } else {
+        alert('Success');
+        hideWarnings();
+    }
+}
+
+function isValidEmail(email) {
+    const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+    return emailRegex.test(email);
+  }
+
+function showWarning(message){
+    warningText.innerText = message;
+    showWarningText[0].style.visibility = "visible";
+    showWarningText[1].style.visibility = "visible";
+}
+function hideWarnings(){
+    showWarningText[0].style.visibility = "hidden";
+    showWarningText[1].style.visibility = "hidden";
 }

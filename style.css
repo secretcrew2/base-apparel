@@ -38,8 +38,8 @@ body{
 } */
 form{
     display: flex;
-    justify-content: center;
-    margin: 0 1rem 3rem;
+    /* justify-content: center; */
+    margin: 0 1rem; 
 }
 #email{
     width: 90%;
@@ -71,7 +71,7 @@ form{
 }
 .attribution{
     background-color: pink;
-    height: 4dvh;
+    height: 2%;
     position: fixed;
     bottom: 0px;
     width: 100%;
@@ -79,20 +79,16 @@ form{
     justify-content: center;
     align-items: center;
 }
-.warning-icon, .warning-text{
-    display: none;
-}
 .warning-text{
     padding: 0.5rem;
-    margin-left: 1rem;
+    margin-left: 2rem;
+    margin-bottom: 2rem;
     color:rgb(233, 105, 126);
-}
-.warning{
-    display: none;
+    font-size: 0.8rem;
 }
 .warning-icon{
     padding: 1.5rem;
-    margin-left: -7rem;
+    margin-left: -8rem;
     background: url('images/icon-error.svg');
     background-repeat: no-repeat;
     background-position: center;
@@ -110,14 +106,19 @@ form{
 /* form::after{
     content: "Please provide an email"
 } */
+
+.warning{
+    visibility: hidden;
+}
 .content h1{
-    line-height: 5rem;
+    line-height: 3rem;
 }
 @media (min-width:576px){
     body{
-        background-image: linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%)), url('images/bg-pattern-mobile.svg');
+        background-image: linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%)), url('images/bg-pattern-desktop.svg');
         background-repeat: no-repeat;
         background-size: cover;
+        height: 100vh;
     }
     .container{
         display: grid;
@@ -127,7 +128,9 @@ form{
             "content1 image"
             "form image";
             /* "foot foot"; */
-        height: 100dvh;
+        height: 100vh;
+        padding: 2rem;
+        
     }
     /* .attribution{
         grid-area: foot;
@@ -151,6 +154,7 @@ form{
     .content .title, .content .description{
         text-align: start;
     }
+    
     .form{
         grid-area: form;
         
@@ -168,7 +172,9 @@ form{
         background-size: cover;
     }
     .title{
-        font-size: 4rem;
+        margin-top: 1rem;
+        margin-right: 4rem;
+        font-size: 2rem;
         line-height: normal;
     }
     .description{
@@ -177,9 +183,17 @@ form{
         /* letter-spacing: 0.125rem; */
         line-height: 1.75rem;
     }
+    
 }
 @media (min-width:1000px){
+    .container{
+        padding: 0;
+    }
     .desktop{
         margin: 2rem 10rem 0;
+    }
+    .content h1{
+        font-size:4rem;
+        line-height: 5rem;
     }
 }
